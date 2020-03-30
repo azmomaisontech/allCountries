@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useContext } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import NavBar from "./components/layouts/NavBar";
+import Country from "./components/pages/Country";
+import Home from "./components/pages/Home";
+import NotFound from "./components/pages/NotFound";
+import CountryContext from "./context/country/countryContext";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const countryContext = useContext(CountryContext);
+  const { clearCountries } = countryContext;
+
+  useEffect(() => {
+    return () => {
+      clearCountries();
+    };
+
+    //eslint-disable-next-line
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavBar />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/country/:name" component={Country} />
+        <Route exact path="*" component={NotFound} />
+      </Switch>
+    </Router>
   );
-}
+};
 
 export default App;

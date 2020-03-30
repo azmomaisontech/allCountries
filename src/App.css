@@ -1,38 +1,206 @@
-.App {
+:root {
+  --dark-blue-dark-mode: hsl(209, 23%, 22%);
+  --very-dark-blue-dark-mode: hsl(207, 26%, 17%);
+  --very-dark-blue-light-mode: hsl(200, 15%, 8%);
+  --dark-gray-light-mode: hsl(0, 0%, 52%);
+  --very-light-gray-light-mode: hsl(0, 0%, 98%);
+  --white: hsl(0, 0%, 100%);
+  --light-mode-box-shadow: #e1e1e1;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1600px;
+  padding: 0 2rem;
+  margin: auto;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn:hover {
+  opacity: 0.6;
+}
+
+.spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* NavBar */
+nav {
+  background: var(--white);
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .logo a {
+  color: var(--very-dark-blue-light-mode);
+  font-size: 800;
+}
+
+nav .logo,
+nav .dark-mode {
+  padding: 1.5rem 0;
+}
+
+/* Home */
+main {
+  background: var(--very-light-gray-light-mode);
+  padding: 3rem 0;
+  min-height: 100vh;
+}
+
+main .filter {
+  display: flex;
+  justify-content: space-between;
+}
+
+main .search-box {
+  width: 350px;
+  box-shadow: 1px 1px 1px 1px var(--light-mode-box-shadow);
+  border-radius: 5px;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 2rem;
+}
+
+main .search-box i {
+  color: var(--dark-gray-light-mode);
+}
+
+main .search-box input {
+  width: 90%;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+main select {
+  width: 200px;
+  padding: 0.5rem 2rem;
+  outline: none;
+  font-size: 1rem;
+  background: var(--white);
+  border: none;
+  box-shadow: 1px 1px 1px 1px var(--light-mode-box-shadow);
+  border-radius: 2px;
+  color: var(--dark-gray-light-mode);
+}
+
+main .countries {
+  margin: 3rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 3rem;
+}
+
+main .countries .country {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  border: 1px solid var(--light-mode-box-shadow);
+  background: var(--white);
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px var(--light-mode-box-shadow);
+  height: 400px;
+}
+
+main .countries .flag {
+  overflow: hidden;
+  width: 100%;
+}
+
+main .countries img {
+  width: 100%;
+}
+
+main .countries .info {
+  padding: 2rem;
+  color: var(--very-dark-blue-light-mode);
+}
+
+main .countries .country-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Country Details */
+main .country-details {
+  display: grid;
+  grid-gap: 3rem;
+}
+
+main .country-details a {
+  color: #333;
+  padding: 0.4rem 1.3rem;
+  font-size: 1.3rem;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in;
+  outline: none;
+  box-shadow: 1px 1px 1px 1px var(--light-mode-box-shadow);
+  border-radius: 5px;
+  max-width: 150px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+main .country-details a i {
+  margin-right: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+main .country-details .infos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 3rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+main .country-details .info {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+main .country-details .main-info {
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+main .country-details .borders {
+  margin-top: 2rem;
+}
+
+main .country-details .border-towns {
+  border: 2px solid var(--light-mode-box-shadow);
+  margin: 0 0.4rem;
+  padding: 0.2rem 1.5rem;
+  font-weight: 100;
+  font-size: 1.2rem;
+}
+
+main .country-details img {
+  width: 650px;
+}
+
+main .country-details p {
+  font-size: 1.3rem;
+  font-weight: 100;
+  color: var(--very-dark-blue-light-mode);
 }
