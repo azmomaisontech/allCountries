@@ -6,7 +6,8 @@ import {
   CLEAR_FILTER,
   SET_COUNTRY,
   CLEAR_COUNTRY,
-  SET_LOADING
+  SET_LOADING,
+  SET_THEME
 } from "../type";
 
 export default (state, action) => {
@@ -57,6 +58,12 @@ export default (state, action) => {
       return {
         ...state,
         loading: true
+      };
+    case SET_THEME:
+      localStorage.setItem("darkMode", !state.darkMode);
+      return {
+        ...state,
+        darkMode: !state.darkMode
       };
     default:
       return state;

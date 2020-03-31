@@ -9,7 +9,7 @@ import "./App.css";
 
 const App = () => {
   const countryContext = useContext(CountryContext);
-  const { clearCountries } = countryContext;
+  const { clearCountries, darkMode } = countryContext;
 
   useEffect(() => {
     return () => {
@@ -21,12 +21,14 @@ const App = () => {
 
   return (
     <Router>
-      <NavBar />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/country/:name" component={Country} />
-        <Route exact path="*" component={NotFound} />
-      </Switch>
+      <div className={darkMode ? "dark" : "light"}>
+        <NavBar />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/country/:name" component={Country} />
+          <Route exact path="*" component={NotFound} />
+        </Switch>
+      </div>
     </Router>
   );
 };

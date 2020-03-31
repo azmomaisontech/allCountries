@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import CountryReducer from "./countryReducer";
 import CountryContext from "./countryContext";
+import axios from "axios";
 import {
   GET_COUNTRIES,
   CLEAR_COUNTRIES,
@@ -9,9 +10,9 @@ import {
   FILTER_COUNTRY,
   CLEAR_FILTER,
   SET_LOADING,
-  FILTER_CONTINENT
+  FILTER_CONTINENT,
+  SET_THEME
 } from "../type";
-import axios from "axios";
 
 const CountryState = props => {
   const initialState = {
@@ -19,7 +20,8 @@ const CountryState = props => {
     country: [],
     filtered: [],
     languages: [],
-    loadng: false
+    loadng: false,
+    darkMode: localStorage.getItem("darkMode")
   };
   const [state, dispatch] = useReducer(CountryReducer, initialState);
 
@@ -111,6 +113,13 @@ const CountryState = props => {
     });
   };
 
+  // Switch between dark and light mode
+  const themeSwitch = () => {
+    dispatch({
+      type: SET_THEME
+    });
+  };
+
   return (
     <CountryContext.Provider
       value={{
@@ -119,13 +128,15 @@ const CountryState = props => {
         country: state.country,
         loading: state.loading,
         languages: state.languages,
+        darkMode: state.darkMode,
         getCountries,
         clearCountries,
         setCountry,
         clearCountry,
         filterCountry,
         filterContinent,
-        clearFilter
+        clearFilter,
+        themeSwitch
       }}
     >
       {props.children}

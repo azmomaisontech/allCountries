@@ -6,3 +6,4 @@ export const CLEAR_COUNTRY = "CLEAR_COUNTRY";
 export const FILTER_COUNTRY = "FILTER_COUNTRY";
 export const CLEAR_FILTER = "CLEAR_FILTER";
 export const SET_LOADING = "SET_LOADING";
+export const SET_THEME = "SET_THEME";

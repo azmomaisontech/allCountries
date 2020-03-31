@@ -4,11 +4,7 @@ import spinner from "../../img/spinner.svg";
 const Spinner = () => {
   return (
     <div className="spinner">
-      <img
-        src={spinner}
-        alt="Loading...."
-        style={{ width: "250px", display: "block", margin: "auto" }}
-      />
+      <img src={spinner} alt="Loading...." className="spinner-image" />
     </div>
   );
 };
